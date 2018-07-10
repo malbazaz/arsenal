@@ -1,7 +1,11 @@
+require 'pry' 
+require 'nokogiri'
+
+
 class Arsenal::Scraper
 
   def self.scrape_main_page
-    main_page = Nokogiri::HTML(open("https://www.arsenal.com/first-team/players"))
+    main_page = Nokogiri::HTML(read("https://www.arsenal.com/first-team/players"))
     players = {}
     @scrapped_players = []
       main_page.css(".block-arsenal-main-content").each_with_index do |player, index|
@@ -12,7 +16,7 @@ class Arsenal::Scraper
           }
       end
 
-
+#binding.pry
 
 
 
