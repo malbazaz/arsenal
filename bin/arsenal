@@ -1,3 +1,5 @@
-#!/usr/bin/env_ruby
+#!/usr/bin/env ruby
 
-puts "Hello World"
+require './lib/environment'
+
+Arsenal::CLI.new.call
