@@ -2,54 +2,52 @@
 
 class Arsenal::CLI 
 
-def call
-	puts "Welcome to Arsenal FC !!!!"
-	scrape_and_collect
-	list_players
-	menu
-end 
+	def call
+		puts "Welcome to Arsenal FC !!!!"
+		main_scrape_and_collect
+		list_players
+		menu
+  	end 
 
-def main_scrape_and_collect
+	def main_scrape_and_collect
 #-- Scrape all the players from the main_page and create a player's collection
-	@scrapped_players = Scraper.scrape_main_page
-	@@players = Player.create_from_collection(@scrapped_players)
-end 
-
-def list_players
-# -- Print the names of all players in a list for selection
-	puts "Please find all the Arsenal players"
-	Player.all.each_with_index do |player_listing, index|
-		index +=1
-		puts "#{index}. #{player_listing.name}"
+		@scrapped_players = Scraper.scrape_main_page
+		@@players = Player.create_from_collection(@scrapped_players)
 	end 
 
-end 
-
-def display_scraped_listing(player_hash)
-	players_hash.each do |key, value|
-		puts "#{key}: #{value}"
-end 
-
-def menu
-#-- Takes in the player selection and provide the selected player's full profile.
-	puts "Enter the number of Arsenal player you'd like more information on:"
-	input = gets.to_i 
+	def list_players
+# -- Print the names of all players in a list for selection
+		puts "Please find all the Arsenal players"
 		Player.all.each_with_index do |player_listing, index|
-			index += 1
-			if index == input
-				puts "You've selected #{player_listing.name}, please find his profile:"
-				new_player_hash = Scraper.scrape_profile_page(player_listing)
-				display_scraped_listing(new_player_hash)
-			end 
+		index +=1
+		puts "#{index}. #{player_listing.name}"
 		end 
-	puts "Re-enter the number of another player, you would like more information on. If you wan't to exit, type Exit"
-	#while input != "exit" 
-	#	menu 
-	#end 
-end
+	end 
 
+	def display_scraped_listing(player_hash)
+		player_hash.each do |key, value|
+		puts "#{key}: #{value}"
+		end 
+	end 
+
+	def menu
+#-- Takes in the player selection and provide the selected player's full profile.
+		puts "Enter the number of Arsenal player you'd like more information on:"
+		input = gets.to_i 
+			Player.all.each_with_index do |player_listing, index|
+				index += 1
+					if index == input
+						puts "You've selected #{player_listing.name}, please find his profile:"
+						new_player_hash = Scraper.scrape_profile_page(player_listing)
+						display_scraped_listing(new_player_hash)
+					end 
+			end 
+		puts "Re-enter the number of another player, you would like more information on. If you wan't to exit, type Exit"
+		while input != 0 || input != "exit" 
+			menu 
+		end 
+	end
 end 
-
 # Manual : Entry
 #	puts <<-DOC
 #	Arsenal Players:
@@ -75,5 +73,3 @@ end
 #		when "5"
 #			puts "You've selected Stefan Lichsteiner"
 #		
-	
-

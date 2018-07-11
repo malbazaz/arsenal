@@ -19,9 +19,9 @@ class Player
   	@name 
   end 
 
-def profile_url
+  def profile_url
 	@profile_url
-end 
+  end 
 
   def self.create_from_collection(players_array)
     players_array.each do |player|

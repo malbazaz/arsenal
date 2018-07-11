@@ -25,19 +25,35 @@ def self.scrape_main_page
 
 
 def self.scrape_profile_page(player)
-	#binding.pry
+	binding.pry
 	# takes in a player and provide his profile url
 	input_profile_url = player.profile_url
 	#returns all the information i.e. full profile of player selected
     profile_page = Nokogiri::HTML(open(input_profile_url))
     profile_links={}
-    profile_links[:name] = profile_page.css(".info-card__key:contains('Name')~.info-card__value").first.text
-    profile_links[:born] = profile_page.css(".info-card__key:contains('Born')~.info-card__value").first.text
-    profile_links[:previous_clubs] = profile_page.css(".info-card__key:contains('Previous Clubs')~.info-card__value").first.text
-    profile_links[:squad_number] = profile_page.css(".info-card__key:contains('Squad Number')~.info-card__value").first.text
-    profile_links[:twitter] = profile_page.css(".info-card__key:contains('Twitter')~.info-card__value").first.text
-    profile_links[:bio] = profile_page.css(".article-body").css("p~p").text.gsub!("\u00A0", " ")
-
+    
+    	if profile_page.css(".info-card__list").text.include?("Name") 
+    		profile_links[:name] = profile_page.css(".info-card__key:contains('Name')~.info-card__value").first.text 
+    	end 
+    
+    	if profile_page.css(".info-card__list").text.include?("Born")
+    		profile_links[:born] = profile_page.css(".info-card__key:contains('Born')~.info-card__value").first.text 
+    	end 
+     
+    	if profile_page.css(".info-card__list").text.include?("Previous Clubs") 
+    		profile_links[:previous_clubs] = profile_page.css(".info-card__key:contains('Previous Clubs')~.info-card__value").first.text
+    	end 
+     
+    	if profile_page.css(".info-card__list").text.include?("Squad Number") 
+    		profile_links[:squad_number] = profile_page.css(".info-card__key:contains('Squad Number')~.info-card__value").first.text
+    	end
+     
+    	if profile_page.css(".info-card__list").text.include?("Twitter") 
+    		profile_links[:twitter] = profile_page.css(".info-card__key:contains('Twitter')~.info-card__value").first.text
+    	end 
+     
+    		profile_links[:bio] = profile_page.css(".article-body").css("p~p").text.gsub!("\u00A0", " ")
+    		
     profile_links
   end
 #profile_page.css(".info-card__key:contains('Name')~.info-card__value").first.text
