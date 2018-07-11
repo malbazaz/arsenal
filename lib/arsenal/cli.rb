@@ -17,6 +17,7 @@ def list_players
 		4. Granit Xhaka
 		5. Stefan Lichsteiner
 		DOC
+# -- Here, I will take All Players from main page and will print their name in a list
 end 
 
 def menu
@@ -38,6 +39,7 @@ def menu
 		end 
 	end 
 end 
-		
+	
+	# Here each selection should not only put the player name but also provide more information.	
 
 end
