@@ -6,10 +6,10 @@ Specs:
 - [ ] Implement both list and detail views
 
 README file contains the following sections: *
-A short description [ ]
-Install instructions [ ]
-A contributor's guide [ ]
-A link to the license for your code [ ]
+A short description [X]
+Install instructions [X]
+A contributor's guide [X]
+A link to the license for your code [X]
 
 CLI Essentials *
 
