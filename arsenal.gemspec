@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["malbazaz"]
   spec.email         = ["39787850+malbazaz@users.noreply.github.com"]
 
-  spec.summary       = "Write a short summary, because RubyGems requires one."
-  spec.description   = "Write a longer description or delete this line."
+  spec.summary       = "This app presents Arsenal players and provides further information for selected players."
+  spec.description   = "The player roster is scrapped from Arsenal's website for uptodate player list."
   spec.homepage      = "https://github.com/malbazaz/arsenal"
   spec.license       = "MIT"
 
