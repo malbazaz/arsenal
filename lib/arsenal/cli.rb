@@ -43,10 +43,12 @@ def menu
 			end 
 		end 
 	puts "Re-enter the number of another player, you would like more information on. If you wan't to exit, type Exit"
-	while input != "exit" 
-		menu 
-	end 
+	#while input != "exit" 
+	#	menu 
+	#end 
 end
+
+end 
 
 # Manual : Entry
 #	puts <<-DOC
