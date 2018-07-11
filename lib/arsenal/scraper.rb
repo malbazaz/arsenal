@@ -51,8 +51,8 @@ def self.scrape_profile_page(player)
     	if profile_page.css(".info-card__list").text.include?("Twitter") 
     		profile_links[:twitter] = profile_page.css(".info-card__key:contains('Twitter')~.info-card__value").first.text
     	end 
-     
-    		profile_links[:bio] = profile_page.css(".article-body").css("p~p").text.gsub!("\u00A0", " ")
+
+    		profile_links[:bio] = profile_page.css(".article-body").css("p~p").text.gsub("\u00A0", " ")
 
     profile_links
   end

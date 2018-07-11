@@ -44,7 +44,7 @@ class Arsenal::CLI
 						display_scraped_listing(new_player_hash)
 					end 
 			end 
-		puts "Re-enter the number of another player, you would like more information on."
+		puts "Re-enter the number of another player, you would like more information on. To exit, enter 0. Any invalid numbers will exit the app."
 		end 
 	end
 end 
