@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+At first, you will be welcomed by the app. You will be shown a roster of all the current Arsenal players. This list is an up-to-date list as per the Arsenal.com official website. You will then need to choose one of those players in order to get their full profile. You should enter the number on the list next to player's name in order to get more information about the player. Once you have entered a valid number, you will be shown that player's profile info. Please note to exit you need to either type 0 or an invalid number (not shown on the list).
 
 ## Development
 
