@@ -25,10 +25,11 @@ def self.scrape_main_page
 
 
 def self.scrape_profile_page(player)
+	binding.pry
 	# takes in a player and provide his profile url
-	profile_url = player[:profile_url]
+	input_profile_url = player.profile_url
 	#returns all the information i.e. full profile of player selected
-    profile_page = Nokogiri::HTML(open(profile_url))
+    profile_page = Nokogiri::HTML(open(input_profile_url))
     profile_links={}
     profile_links[:name] = profile_page.css(".info-card__key:contains('Name')~.info-card__value").first.text
     profile_links[:born] = profile_page.css(".info-card__key:contains('Born')~.info-card__value").first.text
