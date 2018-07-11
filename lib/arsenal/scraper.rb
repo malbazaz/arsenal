@@ -8,6 +8,7 @@ class Scraper
 binding.pry 
 
 def self.scrape_main_page
+	# scrapes the main page and creates an array with hashes inside representing each player's name and url
 
     main_page = Nokogiri::HTML(open("https://www.arsenal.com/first-team/players"))
     binding.pry 
@@ -17,8 +18,7 @@ def self.scrape_main_page
       main_page.css(".player-card").each_with_index do |player, index|
         @scrapped_players[index] = {
           :name => player.css(".player-card__info__name").text + " " + player.css(".player-card__info__position-or-first-name").text,
-          :profile_url =>  first_http + player.css("a").attribute("href").value
-          							}
+          :profile_url =>  first_http + player.css("a").attribute("href").value }
       end
      @scrapped_players
   end 
@@ -26,7 +26,8 @@ def self.scrape_main_page
 
 def self.scrape_profile_page(player)
 	# takes in a player and provide his profile url
-    
+	profile_url = player[:profile_url]
+	#returns all the information i.e. full profile of player selected
     profile_page = Nokogiri::HTML(open(profile_url))
     profile_links={}
     profile_links[:name] = profile_page.css(".info-card__key:contains('Name')~.info-card__value").first.text
