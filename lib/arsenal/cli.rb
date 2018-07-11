@@ -41,14 +41,12 @@ def menu
 				new_player_hash = Scraper.scrape_profile_page(player_listing)
 				display_scraped_listing(new_player_hash)
 			end 
-	end 
+		end 
 	puts "Re-enter the number of another player, you would like more information on. If you wan't to exit, type Exit"
 	while input != "exit" 
 		menu 
 	end 
 end
-
-end  
 
 # Manual : Entry
 #	puts <<-DOC
