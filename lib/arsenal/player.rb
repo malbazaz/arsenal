@@ -4,7 +4,7 @@ require 'open-uri'
 
 class Player
 
-  attr_accessor :first_name, :last_name, :name, :position, :number, :twitter, :bio, :profile_url 
+  attr_accessor  :name, :born, :previous_clubs, :squad_number, :twitter, :bio, :profile_url 
 
   @@all = []
 
