@@ -11,7 +11,7 @@ class Player
   def initialize(player_hash)
     @name = player_hash[:name]
     @@all << self 
-    
+    #could do it alternatively as self.name = player_hash[:name]
   end
 
   def name

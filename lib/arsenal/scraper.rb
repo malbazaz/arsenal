@@ -20,6 +20,7 @@ def self.scrape_main_page
           :profile_url =>  first_http + player.css("a").attribute("href").value
           							}
       end
+     @scrapped_players
   end 
 
 
