@@ -1,4 +1,7 @@
 require 'pry'
+require 'nokogiri'
+require 'open-uri'
+
 class Player
 
   attr_accessor :first_name, :last_name, :name, :position, :number, :twitter, :bio, :profile_url 

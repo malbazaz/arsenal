@@ -5,12 +5,11 @@ require 'pry'
 
 class Scraper
 
-binding.pry 
+#binding.pry 
 
-  def self.scrape_main_page(main)
-
+def self.scrape_main_page
     main_page = Nokogiri::HTML(open("https://www.arsenal.com/first-team/players"))
-    players = {}
+    binding.pry 
     @scrapped_players = []
     first_http = "https://www.arsenal.com"
 #binding.pry
@@ -24,6 +23,5 @@ binding.pry
 
 #binding.pry
 
-
-
 end
+
