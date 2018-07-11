@@ -25,7 +25,6 @@ class Player
    @@all  
   end
 
-  binding.pry 
 end
 
  
