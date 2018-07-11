@@ -1,5 +1,5 @@
-#require 'pry'
-class Arsenal::Player
+require 'pry'
+class Player
 
   attr_accessor :first_name, :last_name, :name, :position, :number, :twitter, :bio, :profile_url 
 
@@ -10,7 +10,6 @@ class Arsenal::Player
     @@all << self 
     
   end
-  #binding.pry 
 
   def self.create_from_collection(players_array)
     players_array.each do |player|
@@ -25,8 +24,8 @@ class Arsenal::Player
   def self.all
    @@all  
   end
+
+  binding.pry 
 end
 
-
-
-end 
+ 
