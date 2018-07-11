@@ -14,6 +14,10 @@ class Player
     
   end
 
+  def name
+  	@name 
+  end 
+
   def self.create_from_collection(players_array)
     players_array.each do |player|
       self.new(player)
