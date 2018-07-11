@@ -9,7 +9,7 @@ class Player
   @@all = []
 
   def initialize(player_hash)
-  	@player_hash = player_hash
+  	@profile_url = player_hash[:profile_url]
     @name = player_hash[:name]
     @@all << self 
     #could do it alternatively as self.name = player_hash[:name]
@@ -19,9 +19,9 @@ class Player
   	@name 
   end 
 
-  def profile_url
-  	@profile_url = player_hash[:profile_url]
-  end 
+def profile_url
+	@profile_url
+end 
 
   def self.create_from_collection(players_array)
     players_array.each do |player|
