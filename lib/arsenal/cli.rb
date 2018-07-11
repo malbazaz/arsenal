@@ -33,8 +33,8 @@ class Arsenal::CLI
 	def menu
 #-- Takes in the player selection and provide the selected player's full profile.
 		puts "Enter the number of Arsenal player you'd like more information on:"
-		input = nil 
-		while input != 0 || input != "exit" 
+		input = 1  
+		while input.between?(1,Player.all.size)
 		input = gets.to_i 
 			Player.all.each_with_index do |player_listing, index|
 				index += 1
@@ -44,7 +44,7 @@ class Arsenal::CLI
 						display_scraped_listing(new_player_hash)
 					end 
 			end 
-		puts "Re-enter the number of another player, you would like more information on. If you wan't to exit, type Exit"
+		puts "Re-enter the number of another player, you would like more information on."
 		end 
 	end
 end 
