@@ -25,7 +25,7 @@ def self.scrape_main_page
 
 
 def self.scrape_profile_page(player)
-	binding.pry
+	#binding.pry
 	# takes in a player and provide his profile url
 	input_profile_url = player.profile_url
 	#returns all the information i.e. full profile of player selected
@@ -53,7 +53,7 @@ def self.scrape_profile_page(player)
     	end 
      
     		profile_links[:bio] = profile_page.css(".article-body").css("p~p").text.gsub!("\u00A0", " ")
-    		
+
     profile_links
   end
 #profile_page.css(".info-card__key:contains('Name')~.info-card__value").first.text
