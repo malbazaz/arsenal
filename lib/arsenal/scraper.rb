@@ -44,6 +44,12 @@ def self.scrape_profile_page(player)
     profile_links
   end
 #main_page.css(".info-card__key:contains('Name')~.info-card__value").first.text
+#main_page.css(".info-card__key:contains('Born')~.info-card__value").first.text
+#main_page.css(".info-card__key:contains('Previous Clubs')~.info-card__value").first.text
+#main_page.css(".info-card__key:contains('Squad Number')~.info-card__value").first.text
+#main_page.css(".info-card__key:contains('Twitter')~.info-card__value").first.text
+
+#main_page.css(".article-body").css("p~p").text.gsub!("\u00A0", " ")
 
 #binding.pry
 
