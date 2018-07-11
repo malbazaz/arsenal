@@ -28,28 +28,21 @@ def self.scrape_profile_page(player)
     
     profile_page = Nokogiri::HTML(open(profile_url))
     profile_links={}
-      profile_page.css(".social-icon-container").children.css("a").each do |link|
-        if link.attribute("href").value.include?("twitter")
-          profile_links[:twitter] = link.attribute("href").value
-        elsif link.attribute("href").value.include?("linkedin")
-          profile_links[:linkedin] = link.attribute("href").value
-        elsif link.attribute("href").value.include?("github")
-          profile_links[:github] = link.attribute("href").value
-        else 
-          profile_links[:blog] = link.attribute("href").value
-        end 
-      end 
-    profile_links[:profile_quote] = profile_page.css(".profile-quote").text.strip
-    profile_links[:bio] = profile_page.css(".description-holder p").text.strip
+    profile_links[:name] = profile_page.css(".info-card__key:contains('Name')~.info-card__value").first.text
+    profile_links[:born] = profile_page.css(".info-card__key:contains('Born')~.info-card__value").first.text
+    profile_links[:previous_clubs] = profile_page.css(".info-card__key:contains('Previous Clubs')~.info-card__value").first.text
+    profile_links[:squad_number] = profile_page.css(".info-card__key:contains('Squad Number')~.info-card__value").first.text
+    profile_links[:twitter] = profile_page.css(".info-card__key:contains('Twitter')~.info-card__value").first.text
+    profile_links[:bio] = profile_page.css(".article-body").css("p~p").text.gsub!("\u00A0", " ")
+
     profile_links
   end
-#main_page.css(".info-card__key:contains('Name')~.info-card__value").first.text
-#main_page.css(".info-card__key:contains('Born')~.info-card__value").first.text
-#main_page.css(".info-card__key:contains('Previous Clubs')~.info-card__value").first.text
-#main_page.css(".info-card__key:contains('Squad Number')~.info-card__value").first.text
-#main_page.css(".info-card__key:contains('Twitter')~.info-card__value").first.text
-
-#main_page.css(".article-body").css("p~p").text.gsub!("\u00A0", " ")
+#profile_page.css(".info-card__key:contains('Name')~.info-card__value").first.text
+#profile_page.css(".info-card__key:contains('Born')~.info-card__value").first.text
+#profile_page.css(".info-card__key:contains('Previous Clubs')~.info-card__value").first.text
+#profile_page.css(".info-card__key:contains('Squad Number')~.info-card__value").first.text
+#profile_page.css(".info-card__key:contains('Twitter')~.info-card__value").first.text
+#profile_page.css(".article-body").css("p~p").text.gsub!("\u00A0", " ")
 
 #binding.pry
 
