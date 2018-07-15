@@ -31,10 +31,10 @@ def self.scrape_profile_page(player)
 	#returns all the information i.e. full profile of player selected
     profile_page = Nokogiri::HTML(open(input_profile_url))
     profile_links={}
-    
-    	if profile_page.css(".info-card__list").text.include?("Name") 
-    		profile_links[:name] = profile_page.css(".info-card__key:contains('Name')~.info-card__value").first.text 
-    	end 
+    # optional name scraping:
+    #	if profile_page.css(".info-card__list").text.include?("Name") 
+    #		profile_links[:name] = profile_page.css(".info-card__key:contains('Name')~.info-card__value").first.text 
+    #	end 
     
     	if profile_page.css(".info-card__list").text.include?("Born")
     		profile_links[:born] = profile_page.css(".info-card__key:contains('Born')~.info-card__value").first.text 
@@ -53,6 +53,10 @@ def self.scrape_profile_page(player)
     	end 
 
     		profile_links[:bio] = profile_page.css(".article-body").css("p~p").text.gsub("\u00A0", " ")
+        
+        player.add_player_attributes(profile_links)
+        
+        #extra_credit: check if scraped
 
     profile_links
   end

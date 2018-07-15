@@ -48,6 +48,8 @@ class Arsenal::CLI
 		end 
 	end
 end 
+# extra credit: add player list
+
 # Manual : Entry
 #	puts <<-DOC
 #	Arsenal Players:
