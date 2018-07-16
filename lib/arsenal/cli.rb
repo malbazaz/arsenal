@@ -33,9 +33,8 @@ class Arsenal::CLI
 	def menu
 #-- Takes in the player selection and provide the selected player's full profile.
 		puts "Enter the number of Arsenal player you'd like more information on:"
-		input = 1  
-		while input > 0
-			input = gets.to_i 
+		input = gets.to_i  
+		if input > 0 
 				while input > Arsenal::Player.all.size 
 					puts "The number you have entered is invalid. Please try again."
 					input = gets.to_i 
@@ -55,6 +54,7 @@ class Arsenal::CLI
 		#			end 
 		#	end 
 			puts "Re-enter the number of another player, you would like more information on. To exit, enter 0."
+			menu
 		end 
 	end
 end 
