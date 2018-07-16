@@ -11,14 +11,14 @@ class Arsenal::CLI
 
 	def main_scrape_and_collect
 #-- Scrape all the players from the main_page and create a player's collection
-		@scrapped_players = Scraper.scrape_main_page
-		@@players = Player.create_from_collection(@scrapped_players)
+		@scrapped_players = Arsenal::Scraper.scrape_main_page
+		@@players = Arsenal::Player.create_from_collection(@scrapped_players)
 	end 
 
 	def list_players
 # -- Print the names of all players in a list for selection
 		puts "Please find all the Arsenal players"
-		Player.all.each_with_index do |player_listing, index|
+		Arsenal::Player.all.each_with_index do |player_listing, index|
 		index +=1
 		puts "#{index}. #{player_listing.name}"
 		end 
@@ -34,17 +34,18 @@ class Arsenal::CLI
 #-- Takes in the player selection and provide the selected player's full profile.
 		puts "Enter the number of Arsenal player you'd like more information on:"
 		input = 1  
-		while input.between?(1,Player.all.size)
-		input = gets.to_i 
-		#binding.pry
-		index = input - 1 
-
-		if !Player.all[index].bio
-			@new_player_hash = Scraper.scrape_profile_page(Player.all[index])
-		end 
-
-		puts "You've selected #{Player.all[index].name}, please find his profile:"
-		display_scraped_listing(@new_player_hash)
+		while input > 0
+			input = gets.to_i 
+				while input > Arsenal::Player.all.size 
+					puts "The number you have entered is invalid. Please try again."
+					input = gets.to_i 
+				end 
+			index = input - 1
+				if !Arsenal::Player.all[index].bio
+					@new_player_hash = Arsenal::Scraper.scrape_profile_page(Arsenal::Player.all[index])
+				end 
+			puts "You've selected #{Arsenal::Player.all[index].name}, please find his profile:"
+			display_scraped_listing(@new_player_hash)
 		 
 		#	Player.all.each_with_index do |player_listing, index|
 		#		index += 1
@@ -53,7 +54,7 @@ class Arsenal::CLI
 		#				new_player_hash = Scraper.scrape_profile_page(player_listing)
 		#			end 
 		#	end 
-		puts "Re-enter the number of another player, you would like more information on. To exit, enter 0. Any invalid numbers will exit the app."
+			puts "Re-enter the number of another player, you would like more information on. To exit, enter 0."
 		end 
 	end
 end 

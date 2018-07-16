@@ -1,6 +1,6 @@
 
 
-class Player
+class Arsenal::Player
 
   attr_accessor  :name, :born, :previous_clubs, :squad_number, :twitter, :bio, :profile_url 
 
