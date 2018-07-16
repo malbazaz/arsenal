@@ -34,8 +34,8 @@ class Arsenal::CLI
 #-- Takes in the player selection and provide the selected player's full profile.
 		puts "Enter the number of Arsenal player you'd like more information on:"
 		input = gets.to_i  
-		if input > 0 
-				while input > Arsenal::Player.all.size 
+		if input != 0 
+				while input > Arsenal::Player.all.size || input < 0 
 					puts "The number you have entered is invalid. Please try again."
 					input = gets.to_i 
 				end 
