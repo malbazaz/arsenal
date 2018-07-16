@@ -1,6 +1,4 @@
-require 'pry'
-require 'nokogiri'
-require 'open-uri'
+
 
 class Player
 
@@ -28,6 +26,7 @@ class Player
   def self.all
    @@all  
   end
+
 
 end
 

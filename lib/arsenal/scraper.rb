@@ -1,9 +1,5 @@
- 
-require 'nokogiri'
-require 'open-uri'
-require 'pry'
 
-class Scraper
+class Arsenal::Scraper
 
 #binding.pry 
 
@@ -12,20 +8,23 @@ def self.scrape_main_page
 
     main_page = Nokogiri::HTML(open("https://www.arsenal.com/first-team/players"))
     #binding.pry 
-    @scrapped_players = []
+    @scraped_players = []
     first_http = "https://www.arsenal.com"
 #binding.pry
       main_page.css(".player-card").each_with_index do |player, index|
-        @scrapped_players[index] = {
+        #binding.pry
+        @scraped_players[index] = {
           :name => player.css(".player-card__info__position-or-first-name").text + " " + player.css(".player-card__info__name").text,
           :profile_url =>  first_http + player.css("a").attribute("href").value }
+
       end
-     @scrapped_players
+     @scraped_players
   end 
 
 
 def self.scrape_profile_page(player)
 	#binding.pry
+  puts "******Scraping**********"
 	# takes in a player and provide his profile url
 	input_profile_url = player.profile_url
 	#returns all the information i.e. full profile of player selected

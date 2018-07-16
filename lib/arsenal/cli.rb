@@ -36,18 +36,31 @@ class Arsenal::CLI
 		input = 1  
 		while input.between?(1,Player.all.size)
 		input = gets.to_i 
-			Player.all.each_with_index do |player_listing, index|
-				index += 1
-					if index == input
-						puts "You've selected #{player_listing.name}, please find his profile:"
-						new_player_hash = Scraper.scrape_profile_page(player_listing)
-						display_scraped_listing(new_player_hash)
-					end 
-			end 
+		#binding.pry
+		index = input - 1 
+
+		if !Player.all[index].bio
+			@new_player_hash = Scraper.scrape_profile_page(Player.all[index])
+		end 
+
+		puts "You've selected #{Player.all[index].name}, please find his profile:"
+		display_scraped_listing(@new_player_hash)
+		 
+		#	Player.all.each_with_index do |player_listing, index|
+		#		index += 1
+		#			if index == input
+		#				puts "You've selected #{player_listing.name}, please find his profile:"
+		#				new_player_hash = Scraper.scrape_profile_page(player_listing)
+		#			end 
+		#	end 
 		puts "Re-enter the number of another player, you would like more information on. To exit, enter 0. Any invalid numbers will exit the app."
 		end 
 	end
 end 
+
+
+
+
 # extra credit: add player list
 
 # Manual : Entry
